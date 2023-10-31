@@ -11,7 +11,7 @@ def save_base(gr , filename):
 if __name__ == '__main__':
     ##different paramters to change:
     
-    number_of_images = 10
+    number_of_images = 1
     number_of_reuse = 1 #how images will share the same background
     
     img_size= 601
