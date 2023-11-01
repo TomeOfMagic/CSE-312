@@ -467,7 +467,7 @@ class GenerateData:
             "imageHeight": self.img_size,
             "imageWidth": self.img_size
         }
-        json_file = os.path.join('img_data/', os.path.basename(filename).split('.')[0] + '.json')
+        json_file = os.path.join('drive/MyDrive/DetectronFolder/data/img_data/', os.path.basename(filename).split('.')[0] + '.json')
         with open(json_file, 'w') as json_file:
             json.dump(data, json_file)
             
