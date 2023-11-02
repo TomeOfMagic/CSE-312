@@ -1,6 +1,7 @@
 import streamlit as st
 from GenerateData import GenerateData
 import random
+from predict import Prediction
 import os
 import time
 
@@ -215,7 +216,10 @@ if submit_button1:
 base_image = './base_img/baseimg.jpg'
 # Create columns within the container
 col1, col2,= st.columns([1, 1])
+
+
 # Place images into the columns
+
 with col1:
     
     if submit_button1: 
@@ -230,8 +234,10 @@ with col1:
        
 defects = spot + scratch + cloudy + radial
 
+submit_button2 = False
 
 with col2:
+    
     if os.path.exists(base_image):
         st.write("Details for Base Image")
         st.write("Image Size: ", img_size, "x", img_size, "pixels")
@@ -240,11 +246,42 @@ with col2:
         st.write("Vertical Line Thickness: ", set_scribe_y)
         st.write("Horizontal Line Thickness: ", set_scribe_x)
         st.write("Number of Defects: ", defects)
+        
+        submit_button2 = st.button('Predict', key='submit_button2')
     
-# with col2:
-#     st.write("Details for image 1")
+if submit_button2:
     
-# col3, col4,= st.columns([1, 1])
+    Prediction(base_image , 'base_img/prediction.jpg')
+    
+    col3, col4,= st.columns([1, 1])
+
+    with col3:
+        
+        if submit_button1: 
+            with st.spinner(text='In progress'):
+                time.sleep(5)
+                
+        if os.path.exists("./base_img/prediction.jpg"):
+            
+            st.image("./base_img/prediction.jpg")
+            
+        else:
+            st.write("Generate Prediction")
+        
+        
+    defects = spot + scratch + cloudy + radial
+
+
+    with col4:
+        if os.path.exists("./base_img/prediction.jpg"):
+            st.write("Details for Base Image")
+            st.write("Image Size: ", img_size, "x", img_size, "pixels")
+            st.write("Width of Grid: ", set_pitch_x)
+            st.write("Height of Grid: ", set_pitch_y)
+            st.write("Vertical Line Thickness: ", set_scribe_y)
+            st.write("Horizontal Line Thickness: ", set_scribe_x)
+            st.write("Number of Defects: ", defects)
+
 
 # with col3:
 #     st.image('./Image/Screenshot 2023-10-19 at 10.13.39 PM.png')
