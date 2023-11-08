@@ -113,25 +113,25 @@ with tab1:
     
     # Width of Grid
     set_pitch_x = st.number_input("Width of Grid",step=1)
-    rndwg = st.checkbox('Randomize', key='rndwg_key')
+    rndwg = st.checkbox('Randomize', key='rndwg_key',value = True)
     if rndwg:
         set_pitch_x = random.randint(pitch_min, pitch_max)
 
     # Height of Grid
     set_pitch_y  = st.number_input("Height of Grid",step=1)
-    rndhg = st.checkbox('Randomize', key='rndhg_key')
+    rndhg = st.checkbox('Randomize', key='rndhg_key',value = True)
     if rndhg:
         set_pitch_y = random.randint(pitch_min, pitch_max)
         
     # Vertical Line Thickness
     set_scribe_y = st.number_input("Verical Line Thickness",step=1)
-    rndvt = st.checkbox('Randomize', key='rndvt_key')
+    rndvt = st.checkbox('Randomize', key='rndvt_key',value = True)
     if rndvt:
         set_scribe_y = random.randint(scribe_min, scribe_max)
 
     # Horizontal Line Thickness
     set_scribe_x  = st.number_input("Horizontal Line Thickness",step=1)
-    rndht = st.checkbox('Randomize', key='rndht_key')
+    rndht = st.checkbox('Randomize', key='rndht_key',value = True)
     if rndht:
         set_scribe_x = random.randint(scribe_min, scribe_max)
     
@@ -142,19 +142,19 @@ with tab2:
     st.write("Please Enter Defects")
     #spot defects
     spot = st.number_input("Number of Spot Defects",step=1)
-    rndSp = st.checkbox('Randomize', key='rndSp_key')
+    rndSp = st.checkbox('Randomize', key='rndSp_key',value = True)
     
     #Scratch defects
     scratch = st.number_input("Number of Scratch Defects",step=1)
-    rndSc = st.checkbox('Randomize', key='rndSc_key')
+    rndSc = st.checkbox('Randomize', key='rndSc_key',value = True)
     
     #Cloudy defects
     cloudy = st.number_input("Number of Cloudy Defects",step=1)
-    rndCl = st.checkbox('Randomize', key='rndCl_key')
+    rndCl = st.checkbox('Randomize', key='rndCl_key',value = True)
     
     #Radial defects
     radial = st.number_input("Number of Radial Defects",step=1)
-    rndRd = st.checkbox('Randomize', key='rndRd_key')
+    rndRd = st.checkbox('Randomize', key='rndRd_key',value = True)
     
     submit_button1 = st.button('Submit', key='submit_button1')
 
