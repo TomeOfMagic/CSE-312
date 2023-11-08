@@ -1,4 +1,4 @@
-wget 'https://github.com/facebookresearch/detectron2/archive/refs/tags/v0.4.zip'
+curl https://github.com/facebookresearch/detectron2/archive/refs/tags/v0.4.zip
 
 unzip 'v0.4.zip'
 

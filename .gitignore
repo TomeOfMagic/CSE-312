@@ -3,3 +3,5 @@
 /DetectronFolder2/
 /__pycache__/
 /build/
+/venv/
+/detectron2-0.4/
