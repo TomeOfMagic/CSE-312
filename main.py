@@ -1,6 +1,6 @@
 from GenerateData import GenerateData
 from PIL import Image
-import numpy as np
+#import numpy as np
 import random
 
 
