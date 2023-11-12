@@ -247,14 +247,15 @@ class GenerateData:
                         if((rand_x + x_radius - self.center_x)**2 + (rand_y - self.center_y)**2 <= (self.wafer_radius - cloudy_boundary)**2):
                             break
             
+        mask = np.zeros_like(self.imgarr)
+        # Draw a ellipse on the mask.
+        #cv.ellipse(mask, (rand_x, rand_y), (x_radius, y_radius), 0, 0, 360, 255, -1)
         if(GPUtil.getAvailable()):
           cv.rectangle(np.asnumpy(mask), (rand_x, rand_y), (rand_x + x_radius, rand_y + y_radius), 255, -1)
         else:
           cv.rectangle(mask, (rand_x, rand_y), (rand_x + x_radius, rand_y + y_radius), 255, -1)
-        # Draw a ellipse on the mask.
-        #cv.ellipse(mask, (rand_x, rand_y), (x_radius, y_radius), 0, 0, 360, 255, -1)
-        cv.rectangle(mask, (rand_x, rand_y), (rand_x + x_radius, rand_y + y_radius), 255, -1)
 
+    
         x1 = 0
         y1 = 0
         for x in mask:
