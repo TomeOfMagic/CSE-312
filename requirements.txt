@@ -18,7 +18,7 @@ cv==1.0.0
 cycler==0.12.1
 debugpy==1.8.0
 decorator==5.1.1
--e git+https://github.com/TomeOfMagic/CSE-312.git@6861b4548faeadc9aa54e091f562dc55cbbcf745#egg=detectron2&subdirectory=detectron2-0.4
+-e git+https://github.com/TomeOfMagic/CSE-312.git@88716b12388ad77397ea3518bce040bac27756c7#egg=detectron2&subdirectory=detectron2-0.4
 exceptiongroup==1.2.0
 executing==2.0.1
 filelock==3.13.1
@@ -100,7 +100,7 @@ tensorboard-data-server==0.7.2
 termcolor==2.3.0
 toml==0.10.2
 toolz==0.12.0
-torch==2.1.0
+torch==2.1.1
 torch-vision==0.1.6.dev0
 torchvision==0.16.1
 tornado==6.3.3
