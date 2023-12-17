@@ -411,48 +411,6 @@ class GenerateData:
             return 1
         return 0
         
-        
-    def GenerateRadialDefect2(self, defect_length, thickness, num_lines_per_defect, spacing, line_height_scale , min_box_size):
-        base_angle = np.random.uniform(0, 2 * np.pi)
-        min_x, max_x, min_y, max_y = float('inf'), float('-inf'), float('inf'), float('-inf')  # Initialize min and max values
-
-        for j in range(num_lines_per_defect):
-            # Modify base_angle with a fixed spacin
-            angle = base_angle + j * spacing
-            
-            # caculate line height
-            length_offset = int(defect_length * np.random.uniform(-line_height_scale, line_height_scale))
-            adjusted_defect_length = defect_length + length_offset
-
-            x_start = self.center_x + int(self.grid_radius * np.cos(angle))
-            y_start = self.center_y + int(self.grid_radius * np.sin(angle))
-
-            x_end = x_start - int(adjusted_defect_length * np.cos(angle))
-            y_end = y_start - int(adjusted_defect_length * np.sin(angle))
-
-            x = np.linspace(x_start, x_end, adjusted_defect_length, dtype=int)
-            y = np.linspace(y_start, y_end, adjusted_defect_length, dtype=int)
-
-            self.imgarr[y, x] = np.random.randint(50, 90, size=x.shape)
-
-            # Generating main line coordinates (with reduced thickness)
-            line_coords = [(ix, iy) for ix in range(-thickness, thickness + 1) 
-                for iy in range(-thickness, thickness + 1) 
-                if np.sqrt(ix**2 + iy**2) <= thickness]
-
-            for ix, iy in line_coords:
-                x_line_coords = x + ix
-                y_line_coords = y + iy
-                valid_coords = (x_line_coords >= 0) & (x_line_coords < self.img_size) & (y_line_coords >= 0) & (y_line_coords < self.img_size)
-                x_line_coords, y_line_coords = x_line_coords[valid_coords], y_line_coords[valid_coords]
-                self.imgarr[y_line_coords, x_line_coords] = np.random.randint(50, 90, size=x_line_coords.shape)
-        
-            min_x = min(min_x, min(x))
-            max_x = max(max_x, max(x))
-            min_y = min(min_y, min(y))
-            max_y = max(max_y, max(y))
-
-        self.DrawBoundary(min_x , min_y  , max_x, max_y, name='Radial2' , min_box_size=min_box_size)
     
     def save_img(self , filename):
         cv.imwrite(filename, self.imgarr)
